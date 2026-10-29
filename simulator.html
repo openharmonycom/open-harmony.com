@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore a simple interactive OpenHarmony-inspired phone interface in your browser.">
+  <title>Interactive simulator — OpenHarmony</title>
+  <link rel="stylesheet" href="subpages.css">
+  <link rel="stylesheet" href="simulator.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="site-brand" href="index.html"><span class="site-mark" aria-hidden="true"></span><span>OpenHarmony</span></a>
+      <div class="site-links">
+        <a href="develop.html">Develop</a><a href="simulator.html" aria-current="page">Simulator</a><a href="community.html">Community</a><a href="academy.html">Academy</a><a href="events.html">Events</a><a href="compatibility.html">Compatibility</a><a href="solutions.html">Solutions</a><a href="about.html">About Us</a>
+      </div>
+      <button class="site-menu" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="site-hero simulator-hero">
+      <div class="site-hero-inner">
+        <div class="site-breadcrumb"><a href="index.html">Home</a> / Interactive simulator</div>
+        <h1>Explore a connected phone experience</h1>
+        <p>Tap around a small, browser-based OpenHarmony-inspired interface. Open sample apps, adjust quick settings, and return to the home screen at any time.</p>
+      </div>
+    </section>
+
+    <section class="simulator-layout" aria-label="Interactive phone simulator">
+      <div class="simulator-copy">
+        <span class="simulator-eyebrow">A browser demo</span>
+        <h2>Try the interface</h2>
+        <p>This lightweight demo shows how a phone experience can connect apps and system controls in one place. It runs locally in your browser and does not install software or access your device.</p>
+        <ul class="simulator-tips">
+          <li>Tap an app icon to open its sample screen.</li>
+          <li>Tap the status bar or swipe down to open quick settings.</li>
+          <li>Use the Home button or swipe up to return.</li>
+        </ul>
+        <button class="simulator-reset" id="resetSimulator" type="button">Reset demo</button>
+        <p class="simulator-note">This is an interface prototype, not a HarmonyOS system emulator. It cannot run native apps or reproduce real device services.</p>
+      </div>
+
+      <div class="device-stage">
+        <div class="phone-shell" id="phoneShell" aria-label="Interactive phone screen">
+          <div class="phone-side-button" aria-hidden="true"></div>
+          <div class="phone-screen" id="phoneScreen">
+            <button class="status-bar" id="statusButton" type="button" aria-label="Open quick settings">
+              <span id="clock">9:41</span><span class="status-spacer"></span><span aria-hidden="true">◉</span><span aria-hidden="true">▮▮</span><span class="battery" aria-hidden="true">▰</span>
+            </button>
+            <section class="home-view" id="homeView" aria-label="Home screen">
+              <div class="home-heading"><span id="dateLabel">Tuesday, October 29</span><strong>Good day</strong></div>
+              <div class="weather-widget"><span class="weather-sun" aria-hidden="true">☀</span><div><strong>23°</strong><span>Sunny · Shanghai</span></div><span class="weather-high">H 25°<br>L 18°</span></div>
+              <div class="app-grid" aria-label="Apps">
+                <button class="app-icon" data-app="Gallery" type="button"><span class="app-glyph gallery-glyph">✿</span><span>Gallery</span></button>
+                <button class="app-icon" data-app="Settings" type="button"><span class="app-glyph settings-glyph">⚙</span><span>Settings</span></button>
+                <button class="app-icon" data-app="App Market" type="button"><span class="app-glyph market-glyph">✣</span><span>App Market</span></button>
+                <button class="app-icon" data-app="Music" type="button"><span class="app-glyph music-glyph">♫</span><span>Music</span></button>
+                <button class="app-icon" data-app="Messages" type="button"><span class="app-glyph message-glyph">●</span><span>Messages</span></button>
+                <button class="app-icon" data-app="Camera" type="button"><span class="app-glyph camera-glyph">◉</span><span>Camera</span></button>
+                <button class="app-icon" data-app="Clock" type="button"><span class="app-glyph clock-glyph">◷</span><span>Clock</span></button>
+                <button class="app-icon" data-app="Notes" type="button"><span class="app-glyph notes-glyph">▤</span><span>Notes</span></button>
+              </div>
+              <div class="dock" aria-label="Favorite apps">
+                <button class="dock-app" data-app="Phone" type="button" aria-label="Phone">☎</button>
+                <button class="dock-app" data-app="Messages" type="button" aria-label="Messages">●</button>
+                <button class="dock-app" data-app="Browser" type="button" aria-label="Browser">◎</button>
+                <button class="dock-app" data-app="Camera" type="button" aria-label="Camera">◉</button>
+              </div>
+            </section>
+            <section class="app-view" id="appView" aria-label="App screen" hidden>
+              <div class="app-toolbar"><button id="backButton" type="button" aria-label="Back to home">‹</button><strong id="appTitle">App</strong><span class="toolbar-spacer"></span><span aria-hidden="true">•••</span></div>
+              <div class="app-content" id="appContent"></div>
+            </section>
+            <section class="quick-panel" id="quickPanel" aria-label="Quick settings" hidden>
+              <div class="quick-heading"><span>Quick settings</span><button id="closeQuickPanel" type="button" aria-label="Close quick settings">×</button></div>
+              <p class="quick-date" id="quickDate">Tuesday, October 29</p>
+              <div class="quick-toggles">
+                <button class="quick-toggle active" data-toggle="Wi-Fi" aria-pressed="true" type="button"><span>◔</span><b>Wi-Fi</b><small>OpenHarmony</small></button>
+                <button class="quick-toggle active" data-toggle="Bluetooth" aria-pressed="true" type="button"><span>ᛒ</span><b>Bluetooth</b><small>On</small></button>
+                <button class="quick-toggle" data-toggle="Airplane mode" aria-pressed="false" type="button"><span>✈</span><b>Airplane mode</b><small>Off</small></button>
+                <button class="quick-toggle" data-toggle="Do Not Disturb" aria-pressed="false" type="button"><span>☾</span><b>Do Not Disturb</b><small>Off</small></button>
+              </div>
+              <div class="brightness-control"><span>☼</span><input aria-label="Brightness" type="range" min="20" max="100" value="82"><span>☀</span></div>
+              <p class="quick-footnote">Tap a control to toggle it</p>
+            </section>
+            <div class="phone-navigation"><button id="phoneBack" type="button" aria-label="Back">‹</button><button id="homeButton" type="button" aria-label="Home"><span></span></button><button id="recentButton" type="button" aria-label="Recent apps">▢</button></div>
+          </div>
+        </div>
+        <p class="device-caption">OpenHarmony-inspired interface · Browser demo</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="site-footer-inner"><div class="site-footer-links"><a href="index.html">Home</a><a href="develop.html">Develop</a><a href="simulator.html">Simulator</a><a href="community.html">Community</a><a href="about.html">About Us</a></div><div class="site-footer-bottom">© 2026 OpenAtom Foundation. All rights reserved. This interactive demo is an independent interface prototype.</div></div></footer>
+  <script src="subpages.js"></script>
+  <script src="simulator.js"></script>
+</body>
+</html>
